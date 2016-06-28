@@ -1,2 +1,22 @@
 <h1>Hello World</h1>
 <p>See Me in views/static/index.html.erb</p>
+
+<form action="/urls" method="post">
+	Enter URL:
+	<input type ="text" name="long_url">
+	<input type="submit"  value="Submit">
+</form>
+
+<% unless @url.nil? %> 
+<table border="1" style="width:50%">
+  <tr>
+    <th>Long URL</th>
+    <th>Short URL</th>
+  </tr>
+ 
+  <tr>  
+	<td><%= @url.long_url %></td>
+	<td><%= @url.short_url %></td>
+  </tr>	  
+</table>
+ <% end %>
