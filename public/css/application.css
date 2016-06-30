@@ -2,6 +2,7 @@
 	background-color: #c6e2ff; 
 }
 
+/**/
 .heading {
 	margin-left: 20%;
 	margin-right: 20%;
@@ -19,24 +20,40 @@
 }
 
 .input_box {
-	margin-left: 30%;
-	margin-right: 30%;
+	display: flex;
+	width: 650px;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 0 1px #fff;
 }
 
 input[type=text]:focus {
-    background-color: #FFFFCC;
+    color: #ee6123;
+    /*border-radius: 5px;*/
+	display: inline-block;
+	box-shadow: 0 0 0 1px #FFA500;
+	background-color: #F8F8FF; 
 }
+
+input[placeholder]{
+	color:  #D3D3D3;
+}
+
 
 #long_input{
 	padding: 15px;
-	width: 500px;
+	width: 550px;
 	height: 50px;
 	display: inline-block;
 	vertical-align: middle;
-	box-shadow: 0 0 0 1px #FF9933;
+	/*background-color: #fff;*/
+	/*box-shadow: 0 0 0 1px #fff;*/
+	border: 0 !important;
 }
 
+
 #button{
+	flex: 1;
 	padding: 15px;
 	width: 100px;
 	height: 50px;
@@ -44,8 +61,8 @@ input[type=text]:focus {
 	text-align: center;
 	vertical-align: middle;
 	font-family: brandon-grotesque,"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
 	border: 0 !important;
-	border-radius: 5px;
 	box-shadow: 0 0 0 1px #ee6123;
 	color: #ffffff;
 	background-color: #ee6123;
