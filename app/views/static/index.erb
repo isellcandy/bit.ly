@@ -1,12 +1,28 @@
+<div id="return_message"><%= @msg %></div>
+<div class = "heading">
+<h1>
+<span class="test">
+  <div class = "simpleCardGame">
+    <div class = "card unmatch"></div> 
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+    <div class = "card unmatch"></div>
+  </div>
+   </span>
+ <span id="pop_out">SHORTEN.</span> SHARE. MEASURE.</h1>
 
-
-<div class = "Heading">
-<h1>SHORTEN. SHARE. MEASURE.</h1>
 <p>Join bitly, the world's leading link management platform</p>
 </div>
 <br>
 <br>
-<%= @msg %>
 <form class = "input_box" action="/urls" method="post">
 	<input id="long_input" placeholder = "Paste a link to shorten it" type ="text" name="long_url">
 	<input id="button" type="submit"  value="SHORTEN">
@@ -23,12 +39,14 @@
   </tr>
  
   <% @url.each do |u| %> 
+  <div class="url_row">
   <tr> 
 	<td><%= u.long_url %></td>
-	<td><a href = "/<%= u.short_url %>">
+	<td id="short_link"><a href = "/<%= u.short_url %>">
 		<%= u.short_url %></a></td>
 	<td><%= u.click_count %></td>
   </tr>
+  </div>
   <% end %>
 
 </table>
