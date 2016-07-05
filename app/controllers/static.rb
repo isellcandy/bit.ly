@@ -7,13 +7,16 @@ get '/' do
 end
 
 post '/urls' do
+  @url = Url.find_by(long_url: params[:long_url])
   @msg  = ""
 	unless Url.exists?(long_url: params[:long_url]) 
-    @url = Url.new(:long_url => params[:long_url], :short_url => Url.shorten)
-    @url.save ? (@msg = "successfully saved") : (@msg = "URL invalid")
+    @url = Url.create(:long_url => params[:long_url])
+    @url.created_at ? (@msg = "successfully saved") : (@msg = "URL invalid")
   end
-  @url = Url.all
-  erb :"static/index"
+  # @url = Url.all
+  # result = {:long_url => @url.long_url, :short_url => @url.short_url}
+  # result.to_jason
+  return @url.to_json 
 end
 
 get '/:short_url' do
@@ -22,6 +25,8 @@ get '/:short_url' do
   @url.save
 	redirect @url.long_url
 end
+
+
 
 
 # @url = url.find_by(:long_url: params[:long_url])

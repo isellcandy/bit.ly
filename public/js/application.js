@@ -1,4 +1,42 @@
 $(document).ready(function(){
+	$("form").submit(function(event){
+		
+		event.preventDefault();
+		$('form > input[type="submit"]').val('Submitting...');
+		$('form > input[type="submit"]').attr('disabled',true);
+		$.ajax({
+			method: "POST",
+			url: '/urls',
+			data: $(this).serialize(), 
+			dataType: 'json',
+			success: function(data){
+			  $('form > input[type="submit"]').val('Shorten');
+			  $('form > input[type="submit"]').attr('disabled',false);
+			  // var t = $.parseJSON(data);
+			  var link = "<a href ='/"+ data.short_url + "' target='_blank'>" + data.short_url+ "</a>";
+			  $('.output_table').append("<tr><td>" + data.long_url + "</td><td>" + link +
+				"</td><td>" + data.click_count + "</td></tr>");
+			} 
+		});
+
+		// ajax alternative
+		// var $form = $(this),
+		// term = $form.find("input[name='long_url']").val(),
+		// url = $form.attr('action');
+		// console.log(term);
+		// console.log(url);
+
+		// var posting = $.post(url, {long_url: term});
+		// posting.done(function(data){
+		// 	console.log(data);
+		// 		var t = $.parseJSON(data);
+		// 		$('.output_table').append("<tr><td>" + t['long_url'] + "</td>" +
+		// 		"<td id='short_link'><a href = '/<%= u.short_url %>'>" + t['short_url'] + "</a></td>" +
+		// 		"<td>" + t['click_count'] + "</td></tr>");
+		// });
+
+	});
+
 	$(".test").hide();
 
 	$('#pop_out').click(function(){
@@ -59,6 +97,7 @@ $(document).ready(function(){
 			}
 		}
 	};
+
 	$('.test').toggle('slow');
 	app.init();
 	});
@@ -68,3 +107,10 @@ $(document).ready(function(){
 	// $(this)
 	// $("form").attr("action")
 
+// $.ajax({
+// 	type: "POST",
+// 	url: url,
+// 	data: data,
+// 	success: success,
+// 	dataType: dataType
+// });
